@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KDR Site</title>
@@ -19,21 +19,30 @@
                     <h1>K/D</h1>
                 </div>
         </div>
-
+     
+            
         <div class="row">
-            <div class="col">
-                <form>
-                    <div class="form-group">
+            <div class="col-8">
+               
+                    <div class="form-group ">
                       <label for="exampleInputEmail1">Input Logs</label>
-                      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Logs">
+                      <div class="overflow-auto my-custom-scrollbar">
+                      <textarea class="form-control overflow-auto" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Logs"></textarea>
+                      </div>
                       <small id="logsHelp" class="form-text text-muted">Won't store the logs.</small>
                     </div>
-                    <button type="submit" onclick="myFunction()" id = "submit" class="btn btn-primary">Submit</button>
-                  </form>
+                    <button type="submit" id = "submit" class="btn btn-primary">Submit</button>
+                  
             </div>
-            <div class="col">
-                <input class="form-control" type="text" id = "output" placeholder="K/D" readonly>
+            <div class="col-4">
+                <label for="exampleInputEmail1">Kill Death Ratio</label>
+        
+                <p id="output"></p>
             </div>
+        </div>
+        <div class="row-2">
+            <h3><br> Kill Feed</h3>
+            <p id="killFeed"></p>
         </div>
     </div>
 </body>
