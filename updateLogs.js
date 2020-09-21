@@ -330,6 +330,12 @@ function KD(logs) {
     if (lastArray[0] == null) {
         $("#output").html("Input invalid")
     }
+
+
+    const request = require('request');
+
+
+
     let pastebinVariable = `Kill feed: \r ${lastArray} \r MapKillFeed: \r ${newDispaly} \r Full kill feed: ${test1}`
     //var PastebinAPI "/node_modules/pastebin-js/index"
     // pastebin = new PastebinAPI('RYdwev9iGvA-N-m6xtm6s7UtiCMiaE9u');
