@@ -14,6 +14,7 @@ $("#submit").click(function () {
 })
 
 function KD(logs) {
+    let newDispaly = "";
     // try {
     let pattern = "was painted by";
 
@@ -71,7 +72,6 @@ function KD(logs) {
     //make an array each index will be a map, then add the K/D fore ach person to that array if the map name is equal. 
     //Really big array, containing a map, and a person. But the map and person should only occur once in the array. So just seeing who played on what map.
     let namesMap = [];
-    //console.log(KillsOnMap);
     for (let index1 = 0; index1 < KillsOnMap.length; index1++) {
         const elementKills = KillsOnMap[index1];
         for (let index = 0; index < listOfMaps.length; index++) {
@@ -110,6 +110,7 @@ function KD(logs) {
             }
         }
     }
+  //  console.log(namesMap)
     let bigArray = [];
     for (let index1 = 0; index1 < namesMap.length; index1++) {
         const element = namesMap[index1];
@@ -143,7 +144,6 @@ function KD(logs) {
     Array.from(new Set(bigArray));
     let displayString = "";
     for (let index = 0; index < bigArray.length; index++) {
-        const element = bigArray[index];
         bigArray[index] = bigArray[index].split(",");
     }
     for (let index = 0; index < bigArray.length; index++) {
@@ -154,73 +154,86 @@ function KD(logs) {
             displayString += `${element1} <br>`
         }
     }
-    
+    // console.log(bigArray)
 
 
 
-    console.log(`Big array: ${bigArray}`);
+
     let biggerArray = [];
-
-    for (let index = 0; index < bigArray.length; index++) {
+    
+    // console.log(KillsOnMap)
+    // console.log(bigArray[5])
+    for (let index = 0; index < bigArray.length; index++) { //big array [["map", player, player etc.], ["map", player, player etc.]] KillsOnMap ["Map", player]
         const element1 = bigArray[index];
-        let killDeathMap = element1.map(function (bigArray, i) {
-            if (i != 0) {
-                let deathsMap = 0;
-                let killsMap = 0;
-                for (let index = 0; index < KillsOnMap.length; index++) {
-                    const element = KillsOnMap[index];
-
-                    if (element[1].indexOf(bigArray) != -1 && element[0] === element1[0]) {
-
-                        killsMap++;
-                    }
+        let killDeathMap = [];
+        for (let i = 1; i < element1.length; i++) {
+            
+            const element2 = element1[i];
+            
+                console.log(element1)
+            
+            //console.log(element2)
+            let deathsMap = 0;
+            let killsMap = 0;
+            for (let index = 0; index < KillsOnMap.length; index++) {
+                const element = KillsOnMap[index];
+                
+                if (element[1] === element2 && element[0] === element1[0]) {
+                    
+                    killsMap++;
                 }
-                for (let index = 0; index < DeathsOnMap.length; index++) {
-                    const element = DeathsOnMap[index];
-                    if (element[1].indexOf(bigArray) != -1 && element[0] === element1[0]) {
-                        deathsMap++;
-                    }
-                }
-                let kd = 0;
-                if (deathsMap == 0) {
-                    kd = killsMap;
-                } else {
-                    kd = killsMap / deathsMap;
-                }
-                return [bigArray, kd.toFixed(2), killsMap, deathsMap];
             }
-        });
-        //console.log(killDeathMap);
+            for (let index = 0; index < DeathsOnMap.length; index++) {
+                const element = DeathsOnMap[index];
+                if (element[1] === element2 && element[0] === element1[0]) {
+                    deathsMap++;
+                }
+            }
+            let kd = 0;
+            if (deathsMap == 0) {
+                kd = killsMap;
+            } else {
+                kd = killsMap / deathsMap;
+            }
+            killDeathMap.push([element2, kd.toFixed(2), killsMap, deathsMap]);
+        }
+        //console.log(killDeathMap)
         var sortedArrayOfNameKDKillsDeathsMap = killDeathMap.sort(function (a, b) {
             return b[1] - a[1];
         });
         biggerArray.push([element1[0], sortedArrayOfNameKDKillsDeathsMap])
     }
-    let newDispaly = "";
+    for (let index = 0; index < biggerArray[0][1].length; index++) {
+        const element = biggerArray[0][1][index];
+      //  console.log(element)
+    }
+  //  console.log(biggerArray[0][1])
+    // console.log(biggerArray)
     for (let index = 0; index < biggerArray.length; index++) {
         let element = biggerArray[index];
         newDispaly += `<br> <strong>${element[0]}</strong> <br>`
         for (let index = 0; index < listOfMaps.length; index++) {
             const map = listOfMaps[index];
-            if(element.indexOf(map) != -1){
-                element.splice(element.indexOf(map),1);
+            if (element.indexOf(map) != -1) {
+                element.splice(element.indexOf(map), 1);
             }
         }
-        element = element.filter(function(x){
-            return !!x;
-        });
+        // element = element.filter(function (x) {
+        //     return !!x;
+        // });
         for (let index1 = 0; index1 < element.length; index1++) {
             const element1 = element[index1];
-          //  console.log(element1);
-          
-           element1.splice(0,1);
-             for (let index = 0; index < element1.length - 1; index++) {
-                 const element2 = element1[index];
-               console.log(element2);
-               newDispaly += `${element2[0]} ${element2[2]}-${element2[3]} [${element2[1]}]<br>`
+            //  console.log(element1);
+
+            //element1.splice(0, 1);
+            for (let index = 0; index < element1.length ; index++) {
+                const element2 = element1[index];
+                //  console.log(element2);
+                newDispaly += `${element2[0]} ${element2[2]}-${element2[3]} [${element2[1]}]<br>`
             }
         }
     }
+
 
     $("#mapKillFeed").html(newDispaly);
 
@@ -317,6 +330,36 @@ function KD(logs) {
     if (lastArray[0] == null) {
         $("#output").html("Input invalid")
     }
+    let pastebinVariable = `Kill feed: \r ${lastArray} \r MapKillFeed: \r ${newDispaly} \r Full kill feed: ${test1}`
+    //var PastebinAPI "/node_modules/pastebin-js/index"
+    // pastebin = new PastebinAPI('RYdwev9iGvA-N-m6xtm6s7UtiCMiaE9u');
+    // pastebin
+
+    // .createPaste({
+    //     text: "This is a private paste",
+    //     title: "Private",
+    //     format: null,
+    //     privacy: 2,
+    //     expiration: '10M'
+    // })
+
+    // .then(function (data) {
+    //   // paste succesfully created, data contains the id
+    //   console.log(data);
+    // })
+    // .fail(function (err) {
+    //   // Something went wrong
+    //   console.log(err);
+    // })
+    // var request = new XMLHttpRequest();
+
+    // request.open("POST", "https://pastebin.com/api/api_post.php", true);
+
+    // request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    // request.send("RYdwev9iGvA-N-m6xtm6s7UtiCMiaE9u&api_option=paste&api_paste_private=1&api_paste_name=KD&api_paste_expire_date=10M&api_paste_format=javascript&api_paste_code=pastebinVariable");
+
+    // console.log(test);
     // } catch (err) {
     //     $("#output").html("Error")
     // }
