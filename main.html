@@ -16,40 +16,52 @@
     <div class="container">
         <h1>K/D</h1>
         <div class="row">
-                <div class="col">
-                    <video width="360" height="250" controls  >
-                        <source src="KDVideo.mp4" type="video/mp4">
-                    </video>
-                    
-                </div>
-                <div class="col">
-                    <small> <br>Music in this video is <strong> <a href="https://www.youtube.com/watch?v=xsxX9LoMHF4&ab_channel=TheHotSardines-Topic" target="_blank">Comes love by The Hot Sardines</a> </strong> <br> <a href="http://www.7-zip.org/download.html" target="_blank">7zip download</a></small>
-                </div>
+            <div class="col">
+                <video width="360" height="250" controls>
+                    <source src="KDVideo.mp4" type="video/mp4">
+                </video>
+
+            </div>
+            <div class="col">
+                <small> <br>Music in this video is <strong> <a
+                            href="https://www.youtube.com/watch?v=xsxX9LoMHF4&ab_channel=TheHotSardines-Topic"
+                            target="_blank">Comes love by The Hot Sardines</a> </strong> <br> <a
+                        href="http://www.7-zip.org/download.html" target="_blank">7zip download</a></small>
+            </div>
         </div>
-     
-            
+
+
         <div class="row">
             <div class="col-8">
-               
-                    <div class="form-group ">
-                      <label for="exampleInputEmail1">Input Logs</label>
-                      <div class="overflow-auto my-custom-scrollbar">
-                      <textarea class="form-control overflow-auto" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Logs"></textarea>
-                      </div>
-                      <small id="logsHelp" class="form-text text-muted">Won't store the logs.</small>
+
+                <div class="form-group ">
+                    <label for="exampleInputEmail1">Input Logs</label>
+                    <div class="overflow-auto my-custom-scrollbar">
+                        <textarea class="form-control overflow-auto" id="exampleInputEmail2"
+                            aria-describedby="emailHelp" placeholder="Logs"></textarea>
                     </div>
-                    <button type="submit" id = "submit" class="btn btn-primary">Submit</button>
-                  
+                    <small id="logsHelp" class="form-text text-muted">Won't store the logs.</small>
+                </div>
+                <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+
             </div>
             <div class="col-4">
                 <label for="exampleInputEmail1">Kill Death Ratio</label>
-        
+
                 <p id="output"></p>
             </div>
         </div>
         <div class="row-2">
-            <h3><br> Kill Feed</h3>
-            <p id="killFeed"></p>
+            <div class="col">
+                <h3><br> Map Statistics</h3>
+                <small>In progress</small>
+                <p id="mapKillFeed"></p>
+            </div>
+            <div class="col">
+                <h3><br> Kill Feed</h3>
+                <p id="killFeed"></p>
+            </div>
+            
         </div>
     </div>
 </body>
@@ -65,4 +77,5 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
 </script>
+<script type="text/javascript" src="map.json"></script>
 <script src="./updateLogs.js"></script>
