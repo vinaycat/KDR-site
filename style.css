@@ -1,21 +1,63 @@
 #exampleInputEmail2 {
-    height:500px;
+    height: 500px;
 }
-body{
-    background-color: #ffffff;
+
+body {
+    background-color: #20BAC5;
 }
-#tutorial{
-    background-color: #ffffff;
+
+/* #tutorial{
+    background-color: #bac8cf;
+} */
+#inputForm {
+    background-color: #ffff6f;
 }
-#inputForm{
-    background-color: #ffffff;
+
+#killDeathRatio {
+    background-color: #ffff6f;
 }
-#killDeathRatio{
-    background-color: #ffffff;
+
+#mapStats {
+    background-color: #ffff6f;
 }
-#mapStats{
-    background-color:#ffffff ;
+
+#kills {
+    background-color: #ffff6f;
 }
-#killFeed{
-    background-color:#ffffff ;
+
+#title {
+    color: blue;
+    font-family: "Comic Sans MS", cursive, sans-serif;
 }
+
+
+
+/* unvisited link */
+a:link {
+    color: blue;
+}
+
+/* visited link */
+a:visited {
+    color: rgb(37, 37, 247);
+}
+
+/* mouse over link */
+a:hover {
+    color: blueviolet;
+}
+
+#footer {
+    background-color: #ffff6f;
+    
+
+}
+/* footer{
+    margin: auto;
+    width: 50%;
+    padding: 10px; 
+}*/
+/* #mapKillFeed {
+    width: 50%;
+    padding: 10px;
+} */

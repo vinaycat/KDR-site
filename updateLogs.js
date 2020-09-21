@@ -1,3 +1,5 @@
+// const { map } = require("bluebird");
+
 let boolean = false;
 // function myFunction(){
 //     $('#output').attr("`)
@@ -5,20 +7,26 @@ let boolean = false;
 // }
 //const request = require('request');
 let logs;
+// var $ = require('jquery');
+
 $("#submit").click(function () {
-    console.log("clicked")
+    console.log("test");
+    //console.log("clicked")
     //var linkText = $("#output").text();
-
     logs = $("#exampleInputEmail2").val();
+    
+    let mapKillFeedP = $("#mapKillFeed").val();
+    if(mapKillFeedP != null){
+        $("#mapKillFeed").html(" ");
+    }
     KD(logs);
-
 })
 
 function KD(logs) {
-    let newDispaly = "";
+    
     // try {
     let pattern = "was painted by";
-
+    let arrayOfMapsColours = [];
     let newArrayTest = logs.split("[CHAT]");
     let before = [];
     let after = [];
@@ -49,6 +57,8 @@ function KD(logs) {
 
         }
     }
+  
+    
     // console.log(indexOfMaps);
     for (let index = 0; index < newArrayTest.length; index++) {
         const element = newArrayTest[index];
@@ -204,14 +214,20 @@ function KD(logs) {
         });
         biggerArray.push([element1[0], sortedArrayOfNameKDKillsDeathsMap])
     }
-    for (let index = 0; index < biggerArray[0][1].length; index++) {
-        const element = biggerArray[0][1][index];
-        //  console.log(element)
-    }
+   
     //  console.log(biggerArray[0][1])
     // console.log(biggerArray)
+    let mapPlayed = [];
     for (let index = 0; index < biggerArray.length; index++) {
+        let newDispaly = "";
         let element = biggerArray[index];
+        let colour = "";
+        for (let index = 0; index < maps.length; index++) {
+            const element1 = maps[index];
+            if(element[0] === element1.name){
+                colour= element1.colour ;
+            }
+        }
         newDispaly += `<br> <strong>${element[0]}</strong> <br>`
         for (let index = 0; index < listOfMaps.length; index++) {
             const map = listOfMaps[index];
@@ -233,10 +249,21 @@ function KD(logs) {
                 newDispaly += `${element2[0]} ${element2[2]}-${element2[3]} [${element2[1]}]<br>`
             }
         }
+        console.log(colour);
+        $( "#mapKillFeed" ).append(`<p class="${colour}" ${newDispaly} `);
+        $(`.${colour}`).css({'border': `5px solid ${colour}`});
+        
     }
-
-
-    $("#mapKillFeed").html(newDispaly);
+    let colourOfMaps = [];
+   // console.log(listOfMaps);
+    for (let index = 0; index < mapPlayed.length; index++) {
+        const element = mapPlayed[index];
+        
+    }
+    // console.log(colourOfMaps);
+//loop over map, check the colour with maps variable. Create a new pargraph tag, and give it the corresponding colour in the loop.
+    
+    // $("#mapKillFeed").html(newDispaly);
 
 
 
@@ -333,31 +360,53 @@ function KD(logs) {
     }
 
 
+
+
+
+
+    //let pastebinVariable = `Kill feed: \r ${lastArray} \r MapKillFeed: \r ${newDispaly} \r Full kill feed: ${test1}`
+
     
-
-
-
-    let pastebinVariable = `Kill feed: \r ${lastArray} \r MapKillFeed: \r ${newDispaly} \r Full kill feed: ${test1}`
-    //var PastebinAPI "/node_modules/pastebin-js/index"
+    // var PastebinAPI = require('pastebin-js')
     // pastebin = new PastebinAPI('RYdwev9iGvA-N-m6xtm6s7UtiCMiaE9u');
     // pastebin
+    //     .createPaste("Test from pastebin-js", "pastebin-js")
+    //     .then(function (data) {
+    //         // paste succesfully created, data contains the id
+    //         console.log(data);
+    //     })
+    //     .fail(function (err) {
+    //         // Something went wrong
+    //         console.log(err);
+    //     })
+    // pastebin
+    //     .getPaste('ADqWAjX5')
+    //     .then(function (data) {
+    //         // data contains the raw paste
+    //         console.log(data);
+    //     })
+    //     .fail(function (err) {
+    //         // Something went wrong
+    //         console.log(err);
+    //     })
+    // pastebin
 
-    // .createPaste({
-    //     text: "This is a private paste",
-    //     title: "Private",
-    //     format: null,
-    //     privacy: 2,
-    //     expiration: '10M'
-    // })
+    //     .createPaste({
+    //         text: "This is a private paste",
+    //         title: "Private",
+    //         format: null,
+    //         privacy: 2,
+    //         expiration: '10M'
+    //     })
 
-    // .then(function (data) {
-    //   // paste succesfully created, data contains the id
-    //   console.log(data);
-    // })
-    // .fail(function (err) {
-    //   // Something went wrong
-    //   console.log(err);
-    // })
+    //     .then(function (data) {
+    //         // paste succesfully created, data contains the id
+    //         console.log(data);
+    //     })
+    //     .fail(function (err) {
+    //         // Something went wrong
+    //         console.log(err);
+    //     })
     // var request = new XMLHttpRequest();
 
     // request.open("POST", "https://pastebin.com/api/api_post.php", true);
