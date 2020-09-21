@@ -3,6 +3,7 @@ let boolean = false;
 //     $('#output').attr("`)
 //     $("h1").html("test")
 // }
+//const request = require('request');
 let logs;
 $("#submit").click(function () {
     console.log("clicked")
@@ -110,7 +111,7 @@ function KD(logs) {
             }
         }
     }
-  //  console.log(namesMap)
+    //  console.log(namesMap)
     let bigArray = [];
     for (let index1 = 0; index1 < namesMap.length; index1++) {
         const element = namesMap[index1];
@@ -160,26 +161,26 @@ function KD(logs) {
 
 
     let biggerArray = [];
-    
+
     // console.log(KillsOnMap)
     // console.log(bigArray[5])
     for (let index = 0; index < bigArray.length; index++) { //big array [["map", player, player etc.], ["map", player, player etc.]] KillsOnMap ["Map", player]
         const element1 = bigArray[index];
         let killDeathMap = [];
         for (let i = 1; i < element1.length; i++) {
-            
+
             const element2 = element1[i];
-            
-                console.log(element1)
-            
+
+            //console.log(element1)
+
             //console.log(element2)
             let deathsMap = 0;
             let killsMap = 0;
             for (let index = 0; index < KillsOnMap.length; index++) {
                 const element = KillsOnMap[index];
-                
+
                 if (element[1] === element2 && element[0] === element1[0]) {
-                    
+
                     killsMap++;
                 }
             }
@@ -205,9 +206,9 @@ function KD(logs) {
     }
     for (let index = 0; index < biggerArray[0][1].length; index++) {
         const element = biggerArray[0][1][index];
-      //  console.log(element)
+        //  console.log(element)
     }
-  //  console.log(biggerArray[0][1])
+    //  console.log(biggerArray[0][1])
     // console.log(biggerArray)
     for (let index = 0; index < biggerArray.length; index++) {
         let element = biggerArray[index];
@@ -226,7 +227,7 @@ function KD(logs) {
             //  console.log(element1);
 
             //element1.splice(0, 1);
-            for (let index = 0; index < element1.length ; index++) {
+            for (let index = 0; index < element1.length; index++) {
                 const element2 = element1[index];
                 //  console.log(element2);
                 newDispaly += `${element2[0]} ${element2[2]}-${element2[3]} [${element2[1]}]<br>`
@@ -332,7 +333,7 @@ function KD(logs) {
     }
 
 
-    const request = require('request');
+    
 
 
 

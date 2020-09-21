@@ -16,7 +16,7 @@
     <div class="container">
         <h1>K/D</h1>
         <div class="row">
-            <div class="col">
+            <div class="col" id="video">
                 <video width="360" height="250" controls>
                     <source src="KDVideo.mp4" type="video/mp4">
                 </video>
@@ -32,7 +32,7 @@
 
 
         <div class="row">
-            <div class="col-8">
+            <div class="col-8" id="inputForm">
 
                 <div class="form-group ">
                     <label for="exampleInputEmail1">Input Logs</label>
@@ -45,19 +45,19 @@
                 <button type="submit" id="submit" class="btn btn-primary">Submit</button>
 
             </div>
-            <div class="col-4">
+            <div class="col-4" id="killDeathRatio">
                 <label for="exampleInputEmail1">Kill Death Ratio</label>
 
                 <p id="output"></p>
             </div>
         </div>
         <div class="row-2">
-            <div class="col">
+            <div class="col" id="mapStats">
                 <h3><br> Map Statistics</h3>
                 <small>In progress</small>
                 <p id="mapKillFeed"></p>
             </div>
-            <div class="col">
+            <div class="col" id="killFeed">
                 <h3><br> Kill Feed</h3>
                 <p id="killFeed"></p>
             </div>
