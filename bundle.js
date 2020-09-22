@@ -39815,26 +39815,34 @@ function extend() {
 }
 
 },{}],245:[function(require,module,exports){
-
 let logs;
 //var $ = require('jquery');
 var PastebinAPI = require('pastebin-js')
-    pastebin = new PastebinAPI('RYdwev9iGvA-N-m6xtm6s7UtiCMiaE9u');
+let lastArray = [];
+let test1;
+let displayArray = [];
 $("#submit").click(function () {
-    console.log("test");
     //console.log("clicked")
     //var linkText = $("#output").text();
     logs = $("#exampleInputEmail2").val();
-    
+
     let mapKillFeedP = $("#mapKillFeed").val();
-    if(mapKillFeedP != null){
+    if (mapKillFeedP != null) {
         $("#mapKillFeed").html(" ");
     }
     KD(logs);
 })
 
+$("#exporter").click(function () {
+    console.log("changed")
+    $("#export").html("clicked")
+    if (test1 != null) {
+        $("#export").html(`${lastArray} <br> ${test1} <br> ${displayArray}`)
+    }
+})
+
 function KD(logs) {
-    
+
     // try {
     let pattern = "was painted by";
     let arrayOfMapsColours = [];
@@ -39868,8 +39876,8 @@ function KD(logs) {
 
         }
     }
-  
-    
+
+
     // console.log(indexOfMaps);
     for (let index = 0; index < newArrayTest.length; index++) {
         const element = newArrayTest[index];
@@ -40025,18 +40033,18 @@ function KD(logs) {
         });
         biggerArray.push([element1[0], sortedArrayOfNameKDKillsDeathsMap])
     }
-   
+
     //  console.log(biggerArray[0][1])
     // console.log(biggerArray)
-    let mapPlayed = [];
+
     for (let index = 0; index < biggerArray.length; index++) {
         let newDispaly = "";
         let element = biggerArray[index];
         let colour = "";
         for (let index = 0; index < maps.length; index++) {
             const element1 = maps[index];
-            if(element[0] === element1.name){
-                colour= element1.colour ;
+            if (element[0] === element1.name) {
+                colour = element1.colour;
             }
         }
         newDispaly += `<br> <strong>${element[0]}</strong> <br>`
@@ -40060,20 +40068,17 @@ function KD(logs) {
                 newDispaly += `${element2[0]} ${element2[2]}-${element2[3]} [${element2[1]}]<br>`
             }
         }
+        displayArray.push(newDispaly);
         console.log(colour);
-        $( "#mapKillFeed" ).append(`<p class="${colour}" ${newDispaly} `);
-        $(`.${colour}`).css({'border': `5px solid ${colour}`});
-        
-    }
-    let colourOfMaps = [];
-   // console.log(listOfMaps);
-    for (let index = 0; index < mapPlayed.length; index++) {
-        const element = mapPlayed[index];
-        
+        $("#mapKillFeed").append(`<p class="${colour}" ${newDispaly} `);
+        $(`.${colour}`).css({
+            'border': `5px solid ${colour}`
+        });
+
     }
     // console.log(colourOfMaps);
-//loop over map, check the colour with maps variable. Create a new pargraph tag, and give it the corresponding colour in the loop.
-    
+    //loop over map, check the colour with maps variable. Create a new pargraph tag, and give it the corresponding colour in the loop.
+
     // $("#mapKillFeed").html(newDispaly);
 
 
@@ -40154,12 +40159,12 @@ function KD(logs) {
     var sortedArrayOfNameKDKillsDeaths = killDeath.sort(function (a, b) {
         return b[1] - a[1];
     });
-    let lastArray = [];
+
     for (let index = 0; index < sortedArrayOfNameKDKillsDeaths.length; index++) {
         const element = sortedArrayOfNameKDKillsDeaths[index];
         lastArray[index] = `${element[0]}: ${element[2]}-${element[3]} [${element[1].toFixed(2)}] <br>`
     }
-    let test1 = before.map(function (before, i) {
+    test1 = before.map(function (before, i) {
         return `${(i-after.length) * -1}: ${after[i]} was painted by ${before}! <br>`;
     });
     test1.reverse();
@@ -40177,18 +40182,17 @@ function KD(logs) {
 
     //let pastebinVariable = `Kill feed: \r ${lastArray} \r MapKillFeed: \r ${newDispaly} \r Full kill feed: ${test1}`
 
-    
-    
-    pastebin
-        .createPaste("Test from pastebin-js", "pastebin-js")
-        .then(function (data) {
-            // paste succesfully created, data contains the id
-            console.log(data);
-        })
-        .fail(function (err) {
-            // Something went wrong
-            console.log(err);
-        })
+    // pastebin = new PastebinAPI('RYdwev9iGvA-N-m6xtm6s7UtiCMiaE9u');
+    // pastebin
+    //     .createPaste("Test from pastebin-js", "pastebin-js")
+    //     .then(function (data) {
+    //         // paste succesfully created, data contains the id
+    //         console.log(data);
+    //     })
+    //     .fail(function (err) {
+    //         // Something went wrong
+    //         console.log(err);
+    //     })
     // pastebin
     //     .getPaste('ADqWAjX5')
     //     .then(function (data) {
