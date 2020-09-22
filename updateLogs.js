@@ -1,14 +1,8 @@
-// const { map } = require("bluebird");
 
-let boolean = false;
-// function myFunction(){
-//     $('#output').attr("`)
-//     $("h1").html("test")
-// }
-//const request = require('request');
 let logs;
-// var $ = require('jquery');
-
+//var $ = require('jquery');
+// var PastebinAPI = require('pastebin-js')
+//     pastebin = new PastebinAPI('RYdwev9iGvA-N-m6xtm6s7UtiCMiaE9u');
 $("#submit").click(function () {
     console.log("test");
     //console.log("clicked")
@@ -367,18 +361,17 @@ function KD(logs) {
     //let pastebinVariable = `Kill feed: \r ${lastArray} \r MapKillFeed: \r ${newDispaly} \r Full kill feed: ${test1}`
 
     
-    // var PastebinAPI = require('pastebin-js')
-    // pastebin = new PastebinAPI('RYdwev9iGvA-N-m6xtm6s7UtiCMiaE9u');
-    // pastebin
-    //     .createPaste("Test from pastebin-js", "pastebin-js")
-    //     .then(function (data) {
-    //         // paste succesfully created, data contains the id
-    //         console.log(data);
-    //     })
-    //     .fail(function (err) {
-    //         // Something went wrong
-    //         console.log(err);
-    //     })
+    
+    pastebin
+        .createPaste("Test from pastebin-js", "pastebin-js")
+        .then(function (data) {
+            // paste succesfully created, data contains the id
+            console.log(data);
+        })
+        .fail(function (err) {
+            // Something went wrong
+            console.log(err);
+        })
     // pastebin
     //     .getPaste('ADqWAjX5')
     //     .then(function (data) {
