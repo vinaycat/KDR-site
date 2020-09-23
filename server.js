@@ -38,4 +38,4 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/main.html'));
 });
 
-app..listen(process.env.PORT || 5000)
+app.listen(process.env.PORT || 5000)
