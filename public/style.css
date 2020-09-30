@@ -1,15 +1,28 @@
 #exampleInputEmail2 {
     height: 500px;
 }
-
-body {
+body{
+    color:white;
+}
+#bg-image {
     background-color: #20BAC5;
+    background-image: url("https://i.imgur.com/2WJTkkN.jpg");
+
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+
+
+    height: 100%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 /* #tutorial{
     background-color: #bac8cf;
 } */
-#inputForm {
+/* #inputForm {
     background-color: #ffff6f;
 }
 
@@ -23,23 +36,26 @@ body {
 
 #kills {
     background-color: #ffff6f;
-}
+} */
 
 #title {
-    color: blue;
-    font-family: "Comic Sans MS", cursive, sans-serif;
+    color: #fffafa;
+    font-family: Times, "Times New Roman", serif;
 }
-
+small{
+    color: #f8f8ff;
+}
 
 
 /* unvisited link */
 a:link {
-    color: blue;
+    color: #fffffd;
+    text-decoration: underline;
 }
 
 /* visited link */
 a:visited {
-    color: rgb(37, 37, 247);
+    color: #fffffd;
 }
 
 /* mouse over link */
@@ -47,11 +63,12 @@ a:hover {
     color: blueviolet;
 }
 
-#footer {
-    background-color: #ffff6f;
-    
+/* #footer {
+   
 
-}
+
+} */
+
 /* footer{
     margin: auto;
     width: 50%;

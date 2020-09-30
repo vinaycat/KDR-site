@@ -13,69 +13,76 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1 id="title">KDR From Logs</h1>
-        <div class="row">
-            <div class="col" id="tutorial">
-                <video width="360" height="250" controls>
-                    <source src="./KDVideo.mp4" type="video/mp4">
-                </video>
-
-            </div>
-            <div class="col">
-                <small> <br>Music in this video is <strong> <a
-                            href="https://www.youtube.com/watch?v=xsxX9LoMHF4&ab_channel=TheHotSardines-Topic"
-                            target="_blank">Comes love by The Hot Sardines</a> </strong> <br> <a
-                        href="http://www.7-zip.org/download.html" target="_blank">7zip download</a></small>
-            </div>
-        </div>
+    <div class="view"
+        style="background-image: url('https://i.imgur.com/2WJTkkN.jpg');  background-repeat: no-repeat; background-size: cover; background-position: center center; background-attachment: fixed;">
 
 
-        <div class="row">
-            <div class="col-8" id="inputForm">
+        <div class="container">
+            <div class="row">
 
-                <div class="form-group ">
-                    <label for="exampleInputEmail1">
-                        <h4>Input Logs</h4>
-                    </label>
-                    <div class="overflow-auto my-custom-scrollbar">
-                        <textarea class="form-control overflow-auto" id="exampleInputEmail2"
-                            aria-describedby="emailHelp" placeholder="Logs"></textarea>
+                <div class="col" id="tutorial">
+                    <div class="text-center">
+                        <h1 id="title">KDR From Logs</h1>
+
+                        <video width="360" height="250" controls>
+                            <source src="./KDVideo.mp4" type="video/mp4">
+                        </video>
+
                     </div>
-                    <small id="logsHelp" class="form-text text-muted">Won't store the logs.</small>
                 </div>
-                <div class="col-2">
-                    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+                <div class="col">
+                    <small> <br>Music in this video is <strong> <a
+                                href="https://www.youtube.com/watch?v=xsxX9LoMHF4&ab_channel=TheHotSardines-Topic"
+                                target="_blank">Comes love by The Hot Sardines</a> </strong> <br> <a
+                            href="http://www.7-zip.org/download.html" target="_blank">7zip download</a></small>
                 </div>
-                <div class="col-4">
-                    
-                    <a href="./output.html" id="exporter"  target="_blank">Export Raw Data<br></a>
+            </div>
 
-                    <small>In progress</small>
+
+            <div class="row">
+                <div class="col-8" id="inputForm">
+
+                    <div class="form-group ">
+                        <label for="exampleInputEmail1">
+                            <h4>Input Logs</h4>
+                        </label>
+                        <div class="overflow-auto my-custom-scrollbar">
+                            <textarea class="form-control overflow-auto" id="exampleInputEmail2"
+                                aria-describedby="emailHelp" placeholder="Logs"></textarea>
+                        </div>
+                        <small class="form-text text-muted">Won't store the logs.</small>
+                    </div>
+                    <div class="col-2">
+                        <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                    <div class="col-4">
+                        <small>In progress: <br></small>
+                        <a href="" target="_blank" id="exporter">Pastebin Link</a>
+                    </div>
+                </div>
+                <div class="col-4" id="killDeathRatio">
+                    <label for="exampleInputEmail1">
+                        <h4>Kill Death Ratio</h4>
+                    </label>
+
+                    <p id="output"></p>
                 </div>
             </div>
-            <div class="col-4" id="killDeathRatio">
-                <label for="exampleInputEmail1">
-                    <h4>Kill Death Ratio</h4>
-                </label>
-
-                <p id="output"></p>
+            <div class="row">
+                <div class="col" id="mapStats">
+                    <h4><br> Map Statistics</h4>
+                    <p id="mapKillFeed"></p>
+                </div>
+                <div class="col" id="kills">
+                    <h4><br> Kill Feed</h4>
+                    <p id="killFeed"></p>
+                </div>
+                <div id="response">
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col" id="mapStats">
-                <h4><br> Map Statistics</h4>
-                <p id="mapKillFeed"></p>
+            <div class="row" id="footer">
+                <footer>By: Vinay (EdgeTea)</footer>
             </div>
-            <div class="col" id="kills">
-                <h4><br> Kill Feed</h4>
-                <p id="killFeed"></p>
-            </div>
-            <div id="response">
-            </div>
-        </div>
-        <div class="row" id="footer">
-            <footer>By: Vinay (EdgeTea)</footer>
         </div>
 
 </body>

@@ -4,6 +4,7 @@ let logs;
 let lastArray = [];
 let test1;
 let displayArray = [];
+
 $("#submit").click(function () {
     //console.log("clicked")
     //var linkText = $("#output").text();
@@ -13,19 +14,32 @@ $("#submit").click(function () {
     if (mapKillFeedP != null) {
         $("#mapKillFeed").html(" ");
     }
-    KD(logs);
-})
+    let pasteBinString = KD(logs);
+    let backgroundImage = '<div class="view" ' +
+    'style="background-image: url("https://i.imgur.com/2WJTkkN.jpg");  background-repeat: no-repeat; background-size: cover; background-position: center center;">'+
+    '</div>';
+    $("body").css({background: "url('https://i.imgur.com/2WJTkkN.jpg') no-repeat fixed bottom left"});  
+    const http = new XMLHttpRequest();
+    // http.open("GET", "http://localhost:5000");
+    // http.onreadystatechange = () =>{
+    //     if(http.readyState == 4){
+    //         alert(http.responseText);
+    //     }
+    // }
+    // http.send();
 
-$("#exporter").click(function () {
-    console.log("changed")
-    $("#export").html("clicked")
-    if (test1 != null) {
-        $("#export").html(`${lastArray} <br> ${test1} <br> ${displayArray}`)
+    http.open("POST", "http://localhost:5000");
+    http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    http.onreadystatechange = () =>{
+        if(http.readyState == 4){
+            $("#exporter").attr("href", http.responseText)
+        }
     }
+    http.send(`vinay=${pasteBinString}`);
 })
-
 function KD(logs) {
-
+    let newDispaly = "";
     // try {
     let pattern = "was painted by";
     let arrayOfMapsColours = [];
@@ -221,7 +235,7 @@ function KD(logs) {
     // console.log(biggerArray)
 
     for (let index = 0; index < biggerArray.length; index++) {
-        let newDispaly = "";
+        newDispaly = "";
         let element = biggerArray[index];
         let colour = "";
         for (let index = 0; index < maps.length; index++) {
@@ -362,8 +376,9 @@ function KD(logs) {
 
 
 
-    //let pastebinVariable = `Kill feed: \r ${lastArray} \r MapKillFeed: \r ${newDispaly} \r Full kill feed: ${test1}`
-
+    let pastebinVariable = `Kill feed: \r ${lastArray} \r MapKillFeed: \r ${displayArray} \r Full kill feed: ${test1}`
+    return pastebinVariable;
+    //let footer = `Extra statistics provided by Vinay, want to get them for yourself? Visist kd`
     // pastebin = new PastebinAPI('RYdwev9iGvA-N-m6xtm6s7UtiCMiaE9u');
     // pastebin
     //     .createPaste("Test from pastebin-js", "pastebin-js")
