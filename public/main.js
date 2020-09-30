@@ -5,7 +5,37 @@ let lastArray = [];
 let test1;
 let displayArray = [];
 
+
+function between(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+let mapImages = []
+for (let index = 0; index < maps.length; index++) {
+    const element = maps[index];
+    mapImages[index] = element.image;
+}
+
+
+window.setInterval(function () {
+    let mapImage = mapImages[between(0, mapImages.length - 1)];
+    let previousMap = mapImage
+    while (previousMap == mapImage) {
+        mapImage = mapImages[between(0, mapImages.length - 1)];
+    }
+    $(".view").fadeOut("fast", function () {
+        $(this).css({
+            "background": "url(" + mapImage + ") no-repeat fixed left ",
+            "background-size": "cover"
+        });
+        $(this).fadeIn("fast");
+    });
+
+}, 5000);
+
 $("#submit").click(function () {
+
+
     //console.log("clicked")
     //var linkText = $("#output").text();
     logs = $("#exampleInputEmail2").val();
@@ -16,9 +46,16 @@ $("#submit").click(function () {
     }
     let pasteBinString = KD(logs);
     let backgroundImage = '<div class="view" ' +
-    'style="background-image: url("https://i.imgur.com/2WJTkkN.jpg");  background-repeat: no-repeat; background-size: cover; background-position: center center;">'+
-    '</div>';
-    $("body").css({background: "url('https://i.imgur.com/2WJTkkN.jpg') no-repeat fixed bottom left"});  
+        'style="background-image: url("https://i.imgur.com/2WJTkkN.jpg");  background-repeat: no-repeat; background-size: cover; background-position: center center;">' +
+        '</div>';
+    // $(".view").change(function(){
+    //     let image = $(".view")
+    //     image.fadeOut('fast', function () {
+    //         image.css({background: "url(" + mapImage + ") no-repeat fixed left ", "background-size": "cover"});
+    //         image.fadeIn('fast');
+    //     });
+    // })
+
     const http = new XMLHttpRequest();
     // http.open("GET", "http://localhost:5000");
     // http.onreadystatechange = () =>{
@@ -31,13 +68,14 @@ $("#submit").click(function () {
     http.open("POST", "http://localhost:5000");
     http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-    http.onreadystatechange = () =>{
-        if(http.readyState == 4){
+    http.onreadystatechange = () => {
+        if (http.readyState == 4) {
             $("#exporter").attr("href", http.responseText)
         }
     }
     http.send(`vinay=${pasteBinString}`);
 })
+
 function KD(logs) {
     let newDispaly = "";
     // try {
