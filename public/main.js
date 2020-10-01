@@ -15,22 +15,69 @@ for (let index = 0; index < maps.length; index++) {
     const element = maps[index];
     mapImages[index] = element.image;
 }
+// $(".view").animate({width:'toggle'}, function () {
+//     $(this).css({
+//         "background": "url(" + mapImage + ") no-repeat fixed left ",
+//         "background-size": "cover"
+//     });
+//     $(this).fadeIn("fast");
+// });
 
-
+// $(this).css({
+//     "background": "url(" + mapImage + ") no-repeat fixed left ",
+//     "background-size": "cover"
+// });
+// let backgroundImage = '<div class="view1" ' +
+// 'style="background-image: url("'+ mapImage +'");  background-repeat: no-repeat; background-size: cover; background-position: center center; background-attachment: fixed;">' +
+// '</div>';
+  // if ($(".view1") != null) {
+    //     $(".view1").remove()
+    // }
+    // let $view1 = $('.view1');
+    // $view1.css({
+    //     "background-image": "url(" + mapImage + ")",
+    //     "background-repeat": "no-repeat",
+    //     "background-size": "cover",
+    //     "background-position": "center",
+    //     "background-attachment": "fixed",
+    //     "display": "none"
+    // })
+    // console.log($view1);
+    // $(".view").fadeOut("slow")
+    // $(".view1").fadeIn("slow")
+let previousMap;
+function image1Fade(nextMap){
+    $('.view').fadeOut('slow', function(){
+        $(this).css({
+            "background-image": "url(" + nextMap + ")",
+            "background-repeat": "no-repeat",
+            "background-size": "cover",
+            "background-position": "center",
+            "background-attachment": "fixed"})
+    });
+    $('.view1').fadeIn('slow');
+}
+function image2Fade(mapImage){
+    $('.view1').fadeOut('slow', function(){
+        $(this).css({
+            "background-image": "url(" + mapImage + ")",
+            "background-repeat": "no-repeat",
+            "background-size": "cover",
+            "background-position": "center",
+            "background-attachment": "fixed"})
+    });
+    $('.view').fadeIn('slow');
+}
 window.setInterval(function () {
     let mapImage = mapImages[between(0, mapImages.length - 1)];
-    let previousMap = mapImage
-    while (previousMap == mapImage) {
+    let nextMap = mapImages[between(0, mapImages.length - 1)];
+
+    while (previousMap == mapImage && mapImage === nextMap) {
         mapImage = mapImages[between(0, mapImages.length - 1)];
     }
-    $(".view").fadeOut("fast", function () {
-        $(this).css({
-            "background": "url(" + mapImage + ") no-repeat fixed left ",
-            "background-size": "cover"
-        });
-        $(this).fadeIn("fast");
-    });
-
+    previousMap = mapImage
+    image1Fade(nextMap);
+    setTimeout(image2Fade(mapImage), 100);
 }, 5000);
 
 $("#submit").click(function () {
@@ -45,9 +92,7 @@ $("#submit").click(function () {
         $("#mapKillFeed").html(" ");
     }
     let pasteBinString = KD(logs);
-    let backgroundImage = '<div class="view" ' +
-        'style="background-image: url("https://i.imgur.com/2WJTkkN.jpg");  background-repeat: no-repeat; background-size: cover; background-position: center center;">' +
-        '</div>';
+
     // $(".view").change(function(){
     //     let image = $(".view")
     //     image.fadeOut('fast', function () {
